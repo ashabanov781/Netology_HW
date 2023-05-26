@@ -25,6 +25,13 @@ int main() {
 		elem = std::stoi(sym);
 		array[i] = elem;
 	}
+	// вывели первый 
+	for (int i = 0; i < length; ++i) {
+
+		std::cout << array[i] << " ";
+
+	}
+	std::cout << std::endl;
 
 		x = array[0];
 
@@ -46,19 +53,24 @@ int main() {
 		elem2 = std::stoi(sym);
 		array2[i] = elem2;
 	}
+	
 	// вывели второй
 	for (int i = 0; i < length2; ++i) {
 
 		std::cout << array2[i] << " ";
 
 	}
+	std::cout << std::endl;
+	
+		x2 = array2[length2 - 1];
 
-		x2 = array2[0];
-
-		for (int i = 1; i < length; ++i) {
-			array2[i - 1] = array2[i];
+		for (int i = length2 - 2; i >= 0; --i) {
+			array2[i + 1] = array2[i];
 		}
-		array2[length2 - 1] = x2;
+		array2[0] = x2;
+
+	
+	
 	
 
 	// вывели первый 
@@ -67,6 +79,7 @@ int main() {
 			std::cout << array[i] << " ";
 
 	}
+	std::cout << std::endl;
 	// вывели второй
 	for (int i = 0; i < length2; ++i) {
 
