@@ -2,10 +2,10 @@
 #include <Windows.h>
 #include <string>
 
-enum class mounth
+
+enum mounth
 {
-    None = 0,
-    January,
+    January = 1,
     February,
     March,
     April,
@@ -23,17 +23,18 @@ int main() {
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
     int x;
+   
+    
+
+
     do {
         std::cout << "Введите номер месяца: ";
         std::cin >> x;
-        // std::cout << x << std::endl;
+        //std::cout << x << std::endl;
 
-
-        switch (x)
+       
+        switch (static_cast<int>(x))
         {
-        case 0:
-            std::cout << "До свидания!" << std::endl;
-            break;
         case 1:
             std::cout << "Январь" << std::endl;
             break;
@@ -72,9 +73,9 @@ int main() {
             break;
 
         }
-        if (x < 0 || x > 13)
-            std::cout << "Неправильный номер!" << std::endl;
+        //if ((x < 0) || (x > 13))
+            
 
-    } while (x > 0 || x < 13);
-
+    } while ((x > 0) && (x < 13));
+    std::cout << "Неправильный номер!" << std::endl;
 }

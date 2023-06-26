@@ -30,17 +30,17 @@ int main()
 {
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
-    bd full;
+  
     int x = 1;
     bd* bd_array = new bd[10];
 
-    bd_array[0].city = "Москва";
+    bd_array[0].city = "Piter";
     bd_array[0].street = "Петров";
     bd_array[0].home = 41;
     bd_array[0].apartment = 19;
     bd_array[0].zip = 119334;
 
-    print_str(&full, x);
+    print_str (bd_array, x);
 
     // for (int i= 0; i < x; ++i)
     // {
