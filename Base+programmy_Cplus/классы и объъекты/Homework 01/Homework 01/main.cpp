@@ -2,10 +2,11 @@
 #include <windows.h>
 
 class Calculator {
-public:
-    double num1;
-    double num2;
+private:
+    double num1 = 1;
+    double num2 = 1;
 
+public:
     bool set_num1(double num1) {
         this->num1 = num1;
         if (num1 != 0) {
@@ -56,24 +57,26 @@ int main() {
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
     double num1, num2;
-
+    Calculator calc;
 
     while (1) {
-        std::cout << "Введите num1: ";
-        std::cin >> num1;
-        // std::cout << std::endl;
+        do {
+            std::cout << "Введите num1: ";
+            std::cin >> num1;
+            if (!calc.set_num1(num1)) {
+                std::cout << "Неверный ввод!" << std::endl;
+            }
+        } while (!calc.set_num1(num1));
+        
+        do {
+            std::cout << "Введите num2: ";
+            std::cin >> num2;
+            if (!calc.set_num2(num2)) {
+                std::cout << "Неверный ввод!" << std::endl;
+            }
+        } while (!calc.set_num2(num2));
+        
 
-        std::cout << "Введите num2: ";
-        std::cin >> num2;
-        // std::cout << std::endl;
-
-        Calculator calc;
-        calc.num1 = num1;
-        calc.num2 = num2;
-
-        // calc.set_num1(num1);
-        // calc.set_num2(num2);
-        if ((calc.set_num1(num1) != 0) && (calc.set_num2(num2) != 0)) {
             calc.add();
             calc.multiply();
             calc.subtract_1_2();
@@ -81,10 +84,7 @@ int main() {
             calc.divide_1_2();
             calc.divide_2_1();
             std::cout << std::endl;
-        }
-        else {
-            std::cout << "Неверный ввод!" << std::endl;
-        };
+
 
     };
 }

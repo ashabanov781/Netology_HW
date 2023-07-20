@@ -16,12 +16,14 @@ public:
     }
 
 
-    void plus(int count) {
-        ++count;
+    int plus(int count) {
+        this->count = count;
+        return ++count;
     };
 
-    void minus(int count) {
-        --count;
+    int minus(int count) {
+        this->count = count;
+        return --count;
     };
 
     void print(int count) {
@@ -37,7 +39,7 @@ int main() {
     int x = 1;
     std::string choose;
     std::string action;
-    int count;
+    int count = 0;
 
     std::cout << "Вы хотите указать начальное значение счётчика? Введите да или нет: ";
     std::cin >> choose;
@@ -45,20 +47,19 @@ int main() {
     if (choose == "да") {
         std::cout << "Введите начальное значение счётчика: ";
         std::cin >> count;
-        Counter counter(count);
-    }
+        }
     if ((choose == "нет")) {
-        Counter counter;
+        count = 1;
     }
     while (x == 1) {
         std::cout << "Введите команду ('+', '-', '=' или 'x'): ";
         std::cin >> action;
         Counter act(count);
         if (action == "+") {
-            act.plus(count);
+            count = act.plus(count);
         }
         if (action == "-") {
-            act.minus(count);
+           count = act.minus(count);
         }
         if (action == "=") {
             act.print(count);
