@@ -3,26 +3,26 @@
 #include <fstream>
 #include <windows.h>
 
-class adress {
+class Adress {
 private:
     std::string town;
     std::string street;
-    int building;
-    int appart;
+    int building = 0;
+    int appart = 0;
     std::string full_adress;
 
 public:
-    adress(std::string town, std::string street, int building, int appart) {
+    Adress(std::string town, std::string street, int building, int appart) {
         this->town = town;
         this->street = street;
         this->building = building;
         this->appart = appart;
-    }
+    };
 
     std::string create_fulladress() {
         full_adress = town + " , " + street + " , " + std::to_string(building) + " , " + std::to_string(appart);
         return full_adress;
-    }
+    };
 };
 
 //Функция создания текстового динамического массива
@@ -31,11 +31,27 @@ std::string* creat_arr(int count) {
     return arr;
 }
 
-//Функция удаления динамического массива
-void delete_arr(std::string* arr, int count) {
-    delete[] arr;
-    arr = nullptr;
-}
+
+//Функция сортировки
+void sort(std::string* arr, int count) {
+
+    bool swapped = false;
+    do {
+        swapped = false;
+        std::string tmp;
+
+        for (int i = count - 1; i > 0; --i) {
+            if (arr[i - 1] > arr[i]) {
+                tmp = arr[i];
+                arr[i] = arr[i - 1];
+                arr[i - 1] = tmp;
+                swapped = true;
+            }
+        }
+    } 
+    while (swapped);
+};
+
 
 //Функция печати массива в файл
 void print_arr(std::string* arr, int count) {
@@ -46,31 +62,23 @@ void print_arr(std::string* arr, int count) {
     }
     else {
         std::cout << "Ошибка открытия файла" << std::endl;
-         }
+    }
 
     fileOut << "Всего количество адресов: " << count << std::endl << std::endl;
 
     fileOut << "Адреса:" << std::endl;
 
-    for (int i = count - 1; i >= 0; i--) {
-        fileOut << count - i << ". " << arr[i] << std::endl;
+    for (int i = 0; i < count; ++i) {
+        fileOut << arr[i] << std::endl;
     }
     fileOut.close();
-}
-
-//Функция сортировки
-void sort(std::string* arr, int count) {
-
-    while (count--) {
-        bool swaped = false;
-        for (int i = 0; i < count; ++i) {
-            if (arr[i] > arr[i + 1]) {
-                std::swap(arr[i], arr[i + 1]);
-                swaped = true;
-            }
-        }
-    }
 };
+
+//Функция удаления динамического массива
+void delete_arr(std::string* arr, int count) {
+    delete[] arr;
+    arr = nullptr;
+}
 
 
 
@@ -96,14 +104,14 @@ int main() {
     int appart;
 
     int count = 0;
-    file >> infile;
-    count = std::stoi(infile);
+    file >> count;
+    //count = std::stoi(infile);
 
     std::string* bd = creat_arr(count);
 
     for (int i = 0; i < count; ++i) {
         file >> town >> street >> building >> appart;
-        adress adress(town, street, building, appart);
+        Adress adress(town, street, building, appart);
         bd[i] = adress.create_fulladress();
     }
 
