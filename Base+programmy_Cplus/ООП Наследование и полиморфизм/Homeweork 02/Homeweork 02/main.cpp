@@ -2,197 +2,190 @@
 #include <string>
 #include <windows.h>
 
-class figure {
-private:
-
-
+class Figure
+{
 protected:
-	bool size_4 = false;
-	int sides;
-	int side_a;
-	int side_b;
-	int side_c;
-	int side_d;
-	int ang_a;
-	int ang_b;
-	int ang_c;
-	int ang_d;
-	figure(int sides, std::string name) {
-		this->sides = sides;
-		this->name = name;
-	}
-
-public:
 	std::string name;
 
-	figure() : figure(0, "Фигура") {};
-	int size_not_4() { return size_4; }
-
-	int get_sides_count() {
-		return sides;
+public:
+	std::string get_name() { return name; }
+	virtual void metod() {
+		std::cout << name;
 	}
-
-	std::string get_name() {
-		return name;
-	}
-
-	int get_side_a() { return side_a; }
-	int get_side_b() { return side_b; }
-	int get_side_c() { return side_c; }
-	int get_side_d() { return side_d; }
-
-	int get_ang_a() { return ang_a; }
-	int get_ang_b() { return ang_b; }
-	int get_ang_c() { return ang_c; }
-	int get_ang_d() { return ang_d; }
-
-
 };
 
-class triangle : public figure {
+
+class Triangle : public Figure {
+
+protected:
+	int side_a = 0;
+	int side_b = 0;
+	int side_c = 0;
+	int ang_a = 0;
+	int ang_b = 0;
+	int ang_c = 0;
+
 
 public:
-	triangle(int side_a, int side_b, int side_c, int ang_a, int ang_b, int ang_c) {
+	Triangle(int side_a, int side_b, int side_c, int ang_a, int ang_b, int ang_c) {
 		name = "Треугольник";
-		this->side_a = side_a;
-		this->side_b = side_b;
-		this->side_c = side_c;
-		this->ang_a = ang_a;
-		this->ang_b = ang_b;
-		this->ang_c = ang_c;
 	}
+		double get_a() { return side_a; }
+		double get_b() { return side_b; }
+		double get_c() { return side_c; }
 
+		double get_A() { return ang_a; }
+		double get_B() { return ang_b; }
+		double get_C() { return ang_c; }
+	
+
+		void metod() override {
+			std::cout << name << ":" << std::endl;
+			std::cout << "Стороны: ";
+			std::cout << "a=" << get_a() << ", b=" << get_b() << ", c=" << get_c() << std::endl;
+			std::cout << "Углы: ";
+			std::cout << "A=" << get_A() << ", B=" << get_B() << ", C=" << get_C() << std::endl;
+			std::cout << std::endl;
+		}
+	
 };
 
-class right_triangle : public triangle {
+class right_triangle : public Triangle  { //прямоугольный треугольник
 public:
-	right_triangle(int side_a, int side_b, int side_c, int ang_a, int ang_b, int ang_c) : triangle(side_a, side_b, side_c, ang_a, ang_b, ang_c) {
-		triangle::name = "Прямоугольный треугольник";
+	right_triangle(int side_a, int side_b, int side_c, int ang_a, int ang_b) : Triangle(side_a, side_b, side_c, ang_a, ang_b, 90) {
+		Triangle::name = "Прямоугольный треугольник";
 	};
 
 };
 
 
-class blalanced_triangle : public triangle {
+class blalanced_triangle : public Triangle { //Равнобедренный треугольник
 public:
-	blalanced_triangle(int side_a, int side_b, int side_c, int ang_a, int ang_b, int ang_c) : triangle(side_a, side_b, side_c, ang_a, ang_b, ang_c) {
-		triangle::name = "Равнобедренный треугольник";
+	blalanced_triangle(int side_a, int side_b, int ang_a, int ang_b) : Triangle(side_a, side_b, side_a, ang_a, ang_b, ang_a) {
+		Triangle::name = "Равнобедренный треугольник";
 	};
 };
 
-class equil_triangle : public triangle
-{
+class equil_triangle : public Triangle { //Равносторонний треугольник
 public:
-	equil_triangle(int side_a, int side_b, int side_c, int ang_a, int ang_b, int ang_c) : triangle(side_a, side_b, side_c, ang_a, ang_b, ang_c) {
-		triangle::name = "Равносторонний треугольник";
+	equil_triangle(int side_a) : Triangle(side_a, side_a, side_a, 60, 60, 60) {
+		Triangle::name = "Равносторонний треугольник";
 	};
 };
 
 
 
-class quadrangle : public figure {
+class Quadrangle : public Figure {
+
+protected:
+	int side_a = 0;
+	int side_b = 0;
+	int side_c = 0;
+	int side_d = 0;
+	int ang_a = 0;
+	int ang_b = 0;
+	int ang_c = 0;
+	int ang_d = 0;
 
 public:
-	quadrangle(int side_a, int side_b, int side_c, int side_d, int ang_a, int ang_b, int ang_c, int ang_d) {
-		size_4 = true;
+	Quadrangle(int side_a, int side_b, int side_c, int side_d, int ang_a, int ang_b, int ang_c, int ang_d) {
 		name = "Четырехугольник";
-		this->side_a = side_a;
-		this->side_b = side_b;
-		this->side_c = side_c;
-		this->side_d = side_d;
+	}
+	double get_a() { return side_a; }
+	double get_b() { return side_b; }
+	double get_c() { return side_c; }
+	double get_d() { return side_d; }
 
-		this->ang_a = ang_a;
-		this->ang_b = ang_b;
-		this->ang_c = ang_c;
-		this->ang_d = ang_d;
+	double get_A() { return ang_a; }
+	double get_B() { return ang_b; }
+	double get_C() { return ang_c; }
+	double get_D() { return ang_d; }
+	
+	void metod() override {
+		std::cout << name << ":" << std::endl;
+		std::cout << "Стороны: ";
+		std::cout << "a=" << get_a() << ", b=" << get_b() << ", c=" << get_c() << ", d=" << get_d() << std::endl;
+		std::cout << "Углы: ";
+		std::cout << "A=" << get_A() << ", B=" << get_B() << ", C=" << get_C() << ", D=" << get_D() << std::endl;
+		std::cout << std::endl;
 	}
 };
 
 
-class rectangle : public quadrangle
+class rectangle : public Quadrangle //Прямоугольник
 {
 public:
-	rectangle(int side_a, int side_b, int side_c, int side_d, int ang_a, int ang_b, int ang_c, int ang_d) : quadrangle(side_a, side_b, side_c, side_d, ang_a, ang_b, ang_c, ang_d) {
-		quadrangle::name = "Прямоугольник";
+	rectangle(int side_a, int side_b) : Quadrangle(side_a, side_b, side_a, side_b, 90, 90, 90, 90) {
+		Quadrangle::name = "Прямоугольник";
 	}
 };
 
-class square : public quadrangle
+class square : public Quadrangle //Квадрат
 {
 public:
-	square(int side_a, int side_b, int side_c, int side_d, int ang_a, int ang_b, int ang_c, int ang_d) : quadrangle(side_a, side_b, side_c, side_d, ang_a, ang_b, ang_c, ang_d) {
-		quadrangle::name = "Квадрат";
+	square(int side_a) : Quadrangle(side_a, side_a, side_a, side_a, 90, 90, 90, 90) {
+		Quadrangle::name = "Квадрат";
 	}
 };
 
-class parale : public quadrangle
+class parale : public Quadrangle //Параллелограмм
 {
 public:
-	parale(int side_a, int side_b, int side_c, int side_d, int ang_a, int ang_b, int ang_c, int ang_d) : quadrangle(side_a, side_b, side_c, side_d, ang_a, ang_b, ang_c, ang_d) {
-		quadrangle::name = "Параллелограмм";
+	parale(int side_a, int side_b, int ang_a, int ang_b) : Quadrangle(side_a, side_b, side_a, side_b, ang_a, ang_b, ang_a, ang_b) {
+		Quadrangle::name = "Параллелограмм";
 	}
 };
 
-class romb : public quadrangle
+class romb : public Quadrangle //Ромб
 {
 public:
-	romb(int side_a, int side_b, int side_c, int side_d, int ang_a, int ang_b, int ang_c, int ang_d) : quadrangle(side_a, side_b, side_c, side_d, ang_a, ang_b, ang_c, ang_d) {
-		quadrangle::name = "Ромб";
+	romb(int side_a, int ang_a, int ang_b) : Quadrangle(side_a, side_a, side_a, side_a, ang_a, ang_b, ang_a, ang_b) {
+		Quadrangle::name = "Ромб";
 	}
 };
 
-//Печать в консоль
-void printFigure(figure& figure) {
-	std::cout << std::endl;
-	std::cout << figure.get_name() << ":" << std::endl;
 
-	std::cout << "Стороны:";
-	std::cout << " a = " << figure.get_side_a() << ", b = " << figure.get_side_b() << ", с = " << figure.get_side_c();
 
-	if (figure.size_not_4())
-	{
-		std::cout << ", d = " << figure.get_side_d() << std::endl;
-	}
-	else { std::cout << std::endl; }
-
-	std::cout << "Углы:";
-	std::cout << " А = " << figure.get_ang_a() << ", В = " << figure.get_ang_b() << ", С = " << figure.get_ang_c();
-	if (figure.size_not_4()) {
-		std::cout << ", D = " << figure.get_ang_d() << std::endl;
-	}
-	else { std::cout << std::endl; }
-}
 
 
 int main() {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 
-	triangle tri_1(10, 20, 30, 50, 60, 70);
-	printFigure(tri_1);
+	Triangle triangle(10, 20, 30, 50, 60, 70);
+	Figure* f_triangle = &triangle;
+	f_triangle->metod();
 
-	right_triangle tri_2(10, 20, 30, 50, 60, 90);
-	printFigure(tri_2);
+	right_triangle right_triangle(10, 20, 30, 50, 60);
+	Figure* f_r_triangle = &right_triangle;
+	f_r_triangle->metod();
 
-	blalanced_triangle tri_3(10, 20, 10, 50, 60, 50);
-	printFigure(tri_3);
+	blalanced_triangle blalanced_triangle(10, 20, 50, 60);
+	Figure* f_i_triangle = &blalanced_triangle;
+	f_i_triangle->metod();
 
-	equil_triangle tri_4(30, 30, 30, 60, 60, 60);
-	printFigure(tri_4);
+	equil_triangle equil_triangle(30);
+	Figure* f_e_triangle = &equil_triangle;
+	f_e_triangle->metod();
 
-	quadrangle quad_1(10, 20, 30, 40, 50, 60, 70, 80);
-	printFigure(quad_1);
+	Quadrangle Quadrangle(10, 20, 30, 40, 50, 60, 70, 80);
+	Figure* f_quadrangle = &Quadrangle;
+	f_quadrangle->metod();
 
-	rectangle quad_2(10, 20, 10, 20, 90, 90, 90, 90);
-	printFigure(quad_2);
+	rectangle rectangle(10, 20);
+	Figure* f_rectangle = &rectangle;
+	f_rectangle->metod();
 
-	square quad_3(20, 20, 20, 20, 90, 90, 90, 90);
-	printFigure(quad_3);
+	square square(20);
+	Figure* f_square = &square;
+	f_square->metod();
 
-	parale quad_4(20, 30, 20, 30, 30, 40, 30, 40);
-	printFigure(quad_4);
+	parale parale(20, 30, 30, 40);
+	Figure* f_parallelogram = &parale;
+	f_parallelogram->metod();
 
-	romb quad_5(30, 30, 30, 30, 30, 40, 30, 40);
-	printFigure(quad_5);
+	romb romb(30, 30, 40);
+	Figure* f_rhomb = &romb;
+	f_rhomb->metod();
 
 }
