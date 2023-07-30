@@ -15,14 +15,16 @@ public:
         this->count = 1;
     }
 
+    int get_counter()
+    {
+        return count;
+    };
 
-    int plus(int count) {
-        this->count = count;
+    int plus() {
         return ++count;
     };
 
-    int minus(int count) {
-        this->count = count;
+    int minus() {
         return --count;
     };
 
@@ -56,13 +58,13 @@ int main() {
         std::cin >> action;
         Counter act(count);
         if (action == "+") {
-            count = act.plus(count);
+            count = act.plus();
         }
         if (action == "-") {
-           count = act.minus(count);
+           count = act.minus();
         }
         if (action == "=") {
-            act.print(count);
+            std::cout << "Значение: " << act.get_counter() << std::endl;
         }
         if (action == "x") {
             x = 0;

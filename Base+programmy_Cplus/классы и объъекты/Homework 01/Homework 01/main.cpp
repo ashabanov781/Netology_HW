@@ -27,31 +27,36 @@ public:
         }
     };
 
-    void add() {
-        std::cout << "num1 + num2 = " << (num1 + num2) << std::endl;
+    double add() {
+        return num1 + num2;
     };
 
-    void multiply() {
-        std::cout << "num1 * num2 = " << (num1 * num2) << std::endl;
+    double multiply() {
+        return num1 * num2;
     };
 
-    void subtract_1_2() {
-        std::cout << "num1 - num2 = " << (num1 - num2) << std::endl;
+    double subtract_1_2() {
+        return num1 - num2;
     };
 
-    void subtract_2_1() {
-        std::cout << "num2 - num1 = " << (num2 - num1) << std::endl;
+    double subtract_2_1() {
+        return num2 - num1;
     };
 
-    void divide_1_2() {
-        std::cout << "num1 / num2 = " << (num1 / num2) << std::endl;
+    double divide_1_2() {
+        return num1/num2;
     };
 
-    void divide_2_1() {
-        std::cout << "num2 / num1 = " << (num2 / num1) << std::endl;
+    double divide_2_1() {
+        return num2/num1;
     };
 
 };
+
+void Print(double result)
+{
+    std::cout << result << std::endl;
+}
 
 int main() {
     SetConsoleCP(1251);
@@ -77,13 +82,29 @@ int main() {
         } while (!calc.set_num2(num2));
         
 
-            calc.add();
-            calc.multiply();
-            calc.subtract_1_2();
-            calc.subtract_2_1();
-            calc.divide_1_2();
-            calc.divide_2_1();
-            std::cout << std::endl;
+        calc.add();
+        std::cout << " num1 + num2 = ";
+        Print(calc.add());
+
+        calc.multiply();
+        std::cout << " num1 * num2 = ";
+        Print(calc.multiply());
+
+        calc.subtract_1_2();
+        std::cout << " num1 - num2 = ";
+        Print(calc.subtract_1_2());
+
+        calc.subtract_2_1();
+        std::cout << " num2 - num1 = ";
+        Print(calc.subtract_2_1());
+
+        calc.divide_1_2();
+        std::cout << " num1 / num2 = ";
+        Print(calc.divide_1_2());
+
+        calc.divide_2_1();
+        std::cout << " num2 / num1 = ";
+        Print(calc.divide_2_1());
 
 
     };
