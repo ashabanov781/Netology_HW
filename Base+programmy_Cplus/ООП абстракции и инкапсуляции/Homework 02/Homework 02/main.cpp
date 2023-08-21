@@ -36,19 +36,15 @@ public:
         return appart;
     }
 
-    // std::string create_fulladress() {
-    //     full_adress = town + " , " + street + " , " + std::to_string(building) + " , " + std::to_string(appart);
-    //     return full_adress;
-    // }
-
-    int converting(std::string x) {
+  
+    static int converting(std::string x) {
         int x2 = 0;
         x2 = std::stoi(x);
         return x2;
     }
 
 
-    void set_convert(Adress& A, Adress& B) {
+    static void set_convert(Adress& A, Adress& B) {
         std::string c1, c2;
         int c3, c4;
         c1 = B.town;
