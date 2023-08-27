@@ -1,0 +1,3 @@
+C:/Users/ashab/Desktop/my_git/Netology/Base+programmy_Cplus/Cmake/my_first_cmake_project/my_first_cmake_project/out/build/x64-Debug/CMakeFiles/my_first_cmake_project.dir
+C:/Users/ashab/Desktop/my_git/Netology/Base+programmy_Cplus/Cmake/my_first_cmake_project/my_first_cmake_project/out/build/x64-Debug/CMakeFiles/edit_cache.dir
+C:/Users/ashab/Desktop/my_git/Netology/Base+programmy_Cplus/Cmake/my_first_cmake_project/my_first_cmake_project/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir
