@@ -2,10 +2,10 @@
 #include <string>
 
 
-#ifdef MYLIBDINAMICWORK2_EXPORTS
-#define MATHPOWERLIBRARY_API __declspec(dllexport)
+#ifdef LIBRARYDYNAMIC_EXPORTS
+#define LIBRARYDYNAMIC_EXPORTS __declspec(dllexport)
 #else
-#define MATHPOWERLIBRARY_API __declspec(dllimport)
+#define LIBRARYDYNAMIC_EXPORTS __declspec(dllimport)
 #endif
 
 namespace lib_dynamic
@@ -13,6 +13,6 @@ namespace lib_dynamic
 	class Leaver
 	{
 	public:
-		MATHPOWERLIBRARY_API std::string leave(std::string z);
+		LIBRARYDYNAMIC_EXPORTS std::string leave(std::string z);
 	};
 }
